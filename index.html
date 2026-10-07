@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mason aldrich | software dev</title>
+    <!-- metadata for platforms -->
+    <meta name="author" content="mason aldrich">
+    <meta name="description" content="hi! im mason, a software dev from the united states!">
+    <link rel="icon" type="image/x-icon" href="assets/logo.ico">
+    <style>
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #00ff00;
+            vertical-align: bottom; /* Aligns cursor with text baseline */
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .page {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        body {
+            font-family: Courier New;
+            background: black;
+            color: #00ff00;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-rendering: pixelated;
+            text-align: center;
+        }
+
+        .container {
+            background: black;
+            width: 700px;
+            max-width: 90%;
+            padding: 40px;
+            border-radius: 0px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        section {
+            border: 3px solid #00ff00;
+            border-radius: 0px;
+            padding: 10px;
+            margin: 8px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+        
+        h2::before {
+            content: "mason@dev:~$ cat ";
+            color: #00ff00; /* slightly darker accent color for prompt */
+        }
+
+
+        ul {
+            list-style-position: inside;
+            padding: 0;
+        }
+        
+        a:link {
+            
+            color: #00ff00;
+            
+        }
+        
+        a:visited {
+            
+            color: #00ff00;
+            
+        }
+    </style>
+    <script>
+        const phrases = [
+            "hi! im mason!",
+            "i build web projects",
+            "i manage a home server",
+            "welcome to my terminal"
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        const element = document.getElementById("typewriter");
+        
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                element.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                element.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 50 : 100;
+        
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                speed = 3000; // Pause for 3 seconds while fully visible
+                isDeleting = true;
+            } 
+
+            else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length; // Loop back to start
+                speed = 500; // Short pause before starting new word
+            }
+        
+            setTimeout(typeEffect, speed);
+        }
+        
+        document.addEventListener("DOMContentLoaded", typeEffect);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h4>my corner of the internet</h4>
+        </header>
+
+        <main>
+            <h1>hi! im mason!<span id="typewriter"></span><span class="cursor"></span></h1>
+            <p>im a developer who codes in html, css, python, and c++</p>
+
+            <section>
+                <h2>projects.txt</h2>
+                <ul>
+                    <li>this website</li>
+                    <li>kyronos</li>
+                    <li>web games</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>contributions.txt</h2>
+                <ul>
+                    <li>is-a.dev | reviewer</li>
+                    <li>lufus | translater</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>hobbies.txt</h2>
+                <ul>
+                    <li>develop</li>
+                    <li>play some games</li>
+                    <li>tinker with tech</li>
+                    <li>manage a home server</li>
+                </ul>
+            </section>
+            
+            <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vscode.png" alt="vs code" width=50 height=50>
+            <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/windows-11.png" alt="win11" width=50 height=50>
+            <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/ubuntu.png" alt="ubuntu" width=50 height=50>
+            <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/proton-vpn.png" alt="proton vpn" width=50 height=50>
+            <a href="https://github.com/MaseDev33" target="_blank">
+                <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/github-light.png" alt="github" width=50 height=50>
+            </a>
+            
+            <section>
+                <h2>contact me</h2>
+                <p>email: <a href="mailto:mase@masecodes.is-a.dev" target="_blank">mase@masecodes.is-a.dev</a></p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 mason aldrich</p>
+        </footer>
+    </div>
+</body>
+</html>
